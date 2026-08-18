@@ -1,17 +1,16 @@
 import java.util.*;
 
 class Solution {
-    public boolean solution(String[] phone_book) {
+    public boolean solution(String[] arr) {
+        boolean answer = true;
+        Arrays.sort(arr);
         
-        Arrays.sort(phone_book);   // 1️⃣ 정렬
-        
-        for(int i = 0; i < phone_book.length - 1; i++) {
-            // 2️⃣ 현재 번호가 다음 번호의 시작인지 확인
-            if(phone_book[i+1].startsWith(phone_book[i])) {
-                return false;
-            }
+        for(int i=1;i<arr.length;i++) {
+            if(arr[i].startsWith(arr[i-1])) {
+                answer = false;
+                break;
+            } 
         }
-        
-        return true;
+        return answer;
     }
 }
